@@ -1,0 +1,68 @@
+QWidget#editor {
+  background-color: #f6f1f0;
+}
+QTextEdit {
+  border: none;
+  padding: 32px;
+}
+QTextEdit#editor_left {
+  background-color: #f6f1f0;
+}
+QTextEdit#editor_right {
+  background-color: #FFFFFF;
+}
+QPushButton {
+  margin-right: 8px;
+  width: 25px;
+  height: 25px;
+}
+QPushButton#btn_close {
+border-image: url('./resource/images/icon/close.gif');
+}
+QPushButton#btn_close:hover,
+QPushButton#btn_close:pressed {
+  border-image: url('./resource/images/icon/close-hover.gif')
+}
+QPushButton#btn_eye {
+border-image: url('./resource/images/icon/eye.gif');
+}
+QPushButton#btn_eye:hover,
+QPushButton#btn_eye:pressed {
+  border-image: url('./resource/images/icon/eye-hover.gif')
+}
+QPushButton#btn_open {
+border-image: url(./resource/images/icon/open.gif);
+}
+QPushButton#btn_open:hover,
+QPushButton#btn_open:pressed {
+  border-image: url(./resource/images/icon/open-hover.gif)
+}
+QPushButton#btn_setting {
+border-image: url(./resource/images/icon/setting.gif);
+}
+QPushButton#btn_setting:hover,
+QPushButton#btn_setting:pressed {
+  border-image: url(./resource/images/icon/setting-hover.gif)
+}
+QPushButton#btn_video {
+border-image: url(./resource/images/icon/video.gif);
+}
+QPushButton#btn_video:hover,
+QPushButton#btn_video:pressed {
+  border-image: url(./resource/images/icon/video-hover.gif)
+}
+QPushButton#btn_full_screen {
+border-image: url(./resource/images/icon/full-screen.gif);
+}
+QPushButton#btn_full_screen:hover,
+QPushButton#btn_full_screen:pressed {
+  border-image: url(./resource/images/icon/full-screen-hover.gif)
+}
+QPushButton#btn_help {
+border-image: url(./resource/images/icon/help.gif);
+}
+QPushButton#btn_help:hover,
+QPushButton#btn_help:pressed {
+  border-image: url(./resource/images/icon/help-hover.gif)
+}
+

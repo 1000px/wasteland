@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1400</width>
+    <height>720</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>荒原</string>
+  </property>
+  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1400</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu_F">
+    <property name="title">
+     <string>文件(&amp;F)</string>
+    </property>
+    <widget class="QMenu" name="menu">
+     <property name="title">
+      <string>导出</string>
+     </property>
+     <addaction name="actionPDF"/>
+     <addaction name="actionHTML"/>
+    </widget>
+    <addaction name="new_file_action"/>
+    <addaction name="open_file_action"/>
+    <addaction name="save_file_action"/>
+    <addaction name="save_as_action"/>
+    <addaction name="recent_action"/>
+    <addaction name="separator"/>
+    <addaction name="menu"/>
+    <addaction name="separator"/>
+    <addaction name="quit_action"/>
+   </widget>
+   <widget class="QMenu" name="menu_E">
+    <property name="title">
+     <string>设置(&amp;T)</string>
+    </property>
+    <addaction name="preferences_set"/>
+    <addaction name="theme_set"/>
+    <addaction name="background_set"/>
+    <addaction name="music_set"/>
+   </widget>
+   <widget class="QMenu" name="menu_A">
+    <property name="title">
+     <string>账户(&amp;A)</string>
+    </property>
+    <addaction name="website_account"/>
+    <addaction name="wechat_account"/>
+   </widget>
+   <widget class="QMenu" name="menu_H">
+    <property name="title">
+     <string>帮助(&amp;H)</string>
+    </property>
+    <addaction name="markdown_help"/>
+    <addaction name="short_key_help"/>
+    <addaction name="about_help"/>
+   </widget>
+   <addaction name="menu_F"/>
+   <addaction name="menu_E"/>
+   <addaction name="menu_A"/>
+   <addaction name="menu_H"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="new_file_action">
+   <property name="text">
+    <string>新建(&amp;N)</string>
+   </property>
+  </action>
+  <action name="save_file_action">
+   <property name="text">
+    <string>保存(&amp;S)</string>
+   </property>
+  </action>
+  <action name="save_as_action">
+   <property name="text">
+    <string>另存为(&amp;R)</string>
+   </property>
+  </action>
+  <action name="recent_action">
+   <property name="text">
+    <string>最近打开</string>
+   </property>
+  </action>
+  <action name="actionPDF">
+   <property name="text">
+    <string>PDF</string>
+   </property>
+  </action>
+  <action name="actionHTML">
+   <property name="text">
+    <string>HTML</string>
+   </property>
+  </action>
+  <action name="quit_action">
+   <property name="text">
+    <string>退出(&amp;C)</string>
+   </property>
+  </action>
+  <action name="preferences_set">
+   <property name="text">
+    <string>首选项</string>
+   </property>
+  </action>
+  <action name="theme_set">
+   <property name="text">
+    <string>主题</string>
+   </property>
+  </action>
+  <action name="background_set">
+   <property name="text">
+    <string>背景图</string>
+   </property>
+  </action>
+  <action name="music_set">
+   <property name="text">
+    <string>音乐</string>
+   </property>
+  </action>
+  <action name="website_account">
+   <property name="text">
+    <string>网站</string>
+   </property>
+  </action>
+  <action name="wechat_account">
+   <property name="text">
+    <string>公众号</string>
+   </property>
+  </action>
+  <action name="markdown_help">
+   <property name="text">
+    <string>Markdown语法</string>
+   </property>
+  </action>
+  <action name="short_key_help">
+   <property name="text">
+    <string>快捷键图谱</string>
+   </property>
+  </action>
+  <action name="about_help">
+   <property name="text">
+    <string>关于荒原</string>
+   </property>
+  </action>
+  <action name="open_file_action">
+   <property name="text">
+    <string>打开(&amp;O)</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
