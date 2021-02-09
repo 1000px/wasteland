@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Bootstrap</title>
+    <link href="./bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./css/layout.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="layout">
+      <h2>工作目录</h2>
+      <button id="get_catalogue" class="btn btn-primary">获取目录信息</button>
+      <div id="result">abc</div>
+      <div id="cata_root" class="root catalogue">
+        <div class="catalogue-h">
+          <span class="glyphicon glyphicon-folder-open"></span>
+          <span class="catalogue-name">文件夹</span>
+          <div class="ctrl">
+            <button type="button" class="btn btn-primary btn-xs">
+              <i class="glyphicon glyphicon-plus"></i>
+            </button>
+          </div>
+        </div>
+        <div class="file-div">
+          <span class="glyphicon glyphicon-file"></span>
+          <span class="file-name">文件1</span>
+          <div class="ctrl">
+            <button type="button" class="btn btn-warning btn-xs">
+              <i class="glyphicon glyphicon-edit"></i>
+            </button>
+            <button type="button" class="btn btn-danger btn-xs">
+              <i class="glyphicon glyphicon-remove"></i>
+            </button>
+          </div>
+        </div>
+        <div class="current file-div">
+          <span class="glyphicon glyphicon-file"></span>
+          <span class="file-name">文件2</span>
+        </div>
+        <div class="catalogue">
+          <div class="catalogue-h">
+            <span class="glyphicon glyphicon-folder-open"></span>
+            <span class="catalogue-name">子文件夹</span>
+          </div>
+          <div class="file-div">
+            <span class="glyphicon glyphicon-file"></span>
+            <span class="file-name">文件3</span>
+          </div>
+          <div class="file-div">
+            <span class="glyphicon glyphicon-file"></span>
+            <span class="file-name">文件4</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./js/jquery@1.12.4-min.js"></script>
+    <script src="./bootstrap/js/bootstrap.min.js"></script>
+    <script src="./js/qwebchannel.js"></script>
+    <script src="./js/main.js"></script>
+  </body>
+</html>

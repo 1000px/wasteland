@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Vue App</title>
+    <link href="./bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./css/layout.css" rel="stylesheet">
+  </head>
+  <body>
+    <div id="app" class="layout">
+      <div class="page-header">
+        <h1>荒原<small>Markdown编辑器</small></h1>
+      </div>
+      <div id="cata_root" class="root catalogue">
+        <div class="leaf-box" v-for="(item, i) in list">
+          <div class="leaf-h" v-if="!item.isleaf">
+            <span class="glyphicon glyphicon-folder-open"></span>
+            <span class="leaf-name">{{item.name}}</span>
+            <div class="ctrl">
+              <button type="button" class="btn btn-primary btn-xs" @click="addFile(item)">
+                <i class="glyphicon glyphicon-plus"></i>
+              </button>
+              <button type="button" class="btn btn-warning btn-xs" @click="addCatalogue(item)">
+                <i class="glyphicon glyphicon-duplicate"></i>
+              </button>              
+            </div>
+            <div class="leaf-input input-group input-group-sm" v-if="item.name==show">
+              <span class="input-group-addon" id="sizing-addon3">输入:</span>
+              <input type="text" v-model="text" 
+                class="form-control" 
+                aria-describedby="sizing-addon3"
+                @keyup.enter="addConfirm(item)"
+                @keyup.esc="show=null">
+              <span class="input-group-addon" id="sizing-addon3">回车确认</span>
+            </div>
+          </div>
+          <div class="leaf-h" :class="{'current': current==item.name}" v-if="item.isleaf">
+            <span class="glyphicon glyphicon-file"></span>
+            <span class="leaf-name" @click="updateEdit(item)">{{item.name}}</span>
+            <div class="ctrl">
+              <button type="button" class="btn btn-warning btn-xs" @click="editFile(item)">
+                <i class="glyphicon glyphicon-edit"></i>
+              </button>
+              <button type="button" class="btn btn-danger btn-xs" @click="deleteFile(item)">
+                <i class="glyphicon glyphicon-remove"></i>
+              </button>              
+            </div>
+            <div class="leaf-input input-group input-group-sm" v-if="item.name==show">
+              <span class="input-group-addon" id="sizing-addon3">输入:</span>
+              <input type="text" v-model="text" 
+                class="form-control" 
+                aria-describedby="sizing-addon3"
+                @keyup.enter="editFileConfirm(item)"
+                @keyup.esc="show=null">
+              <span class="input-group-addon" id="sizing-addon3">回车确认</span>
+            </div>
+          </div>
+          
+          <div v-if="item.children" v-for="(child, i) in item.children" class="sub-leaf">
+            <div class="leaf-h" v-if="!child.isleaf">
+              <span class="glyphicon glyphicon-folder-open"></span>
+              <span class="leaf-name">{{child.name}}</span>
+              <div class="ctrl">
+                <button type="button" class="btn btn-primary btn-xs" @click="addFile(child)">
+                  <i class="glyphicon glyphicon-plus"></i>
+                </button>
+                <button type="button" class="btn btn-warning btn-xs" @click="addCatalogue(child)">
+                  <i class="glyphicon glyphicon-duplicate"></i>
+                </button>                
+              </div>
+              <div class="leaf-input input-group input-group-sm" v-if="child.name==show">
+                <span class="input-group-addon" id="sizing-addon3">输入:</span>
+                <input type="text" v-model="text" 
+                  class="form-control" 
+                  aria-describedby="sizing-addon3"
+                  @keyup.enter="addConfirm(child)"
+                  @keyup.esc="show=null">
+                <span class="input-group-addon" id="sizing-addon3">回车确认</span>
+              </div>
+            </div>
+            <div class="leaf-h" :class="{'current': current==child.name}" v-if="child.isleaf">
+              <span class="glyphicon glyphicon-file"></span>
+              <span class="leaf-name" @click="updateEdit(child)">{{child.name}}</span>
+              <div class="ctrl">
+                <button type="button" class="btn btn-warning btn-xs" @click="editFile(child)">
+                  <i class="glyphicon glyphicon-edit"></i>
+                </button>
+                <button type="button" class="btn btn-danger btn-xs" @click="deleteFile(child)">
+                  <i class="glyphicon glyphicon-remove"></i>
+                </button>
+              </div>
+              <div class="leaf-input input-group input-group-sm" v-if="child.name==show">
+                <span class="input-group-addon" id="sizing-addon3">输入:</span>
+                <input type="text" 
+                  v-model="text" 
+                  class="form-control" 
+                  aria-describedby="sizing-addon3"
+                  @keyup.enter="editFileConfirm(child)"
+                  @keyup.esc="show=null">
+                <span class="input-group-addon" id="sizing-addon3">回车确认</span>
+              </div>
+            </div>
+            <div v-if="child.children" v-for="(leaf, i) in child.children" class="sub-leaf">
+              <div class="leaf-h" v-if="!leaf.isleaf">
+                <span class="glyphicon glyphicon-folder-open"></span>
+                <span class="leaf-name">{{leaf.name}}</span>
+                <div class="ctrl">
+                  <button type="button" class="btn btn-primary btn-xs" @click="addFile(leaf)">
+                    <i class="glyphicon glyphicon-plus"></i>
+                  </button>
+                  <button type="button" class="btn btn-warning btn-xs" @click="addCatalogue(leaf)">
+                    <i class="glyphicon glyphicon-duplicate"></i>
+                  </button>
+                </div>
+                <div class="leaf-input input-group input-group-sm" v-if="leaf.name==show">
+                  <span class="input-group-addon" id="sizing-addon3">输入:</span>
+                  <input type="text" 
+                    v-model="text" 
+                    class="form-control" 
+                    aria-describedby="sizing-addon3"
+                    @keyup.enter="addConfirm(leaf)"
+                    @keyup.esc="show=null">
+                  <span class="input-group-addon" id="sizing-addon3">回车确认</span>
+                </div>
+              </div>
+              <div class="leaf-h" :class="{'current': current==leaf.name}" v-if="leaf.isleaf">
+                <span class="glyphicon glyphicon-file"></span>
+                <span class="leaf-name" @click="updateEdit(leaf)">{{leaf.name}}</span>
+                <div class="ctrl">
+                  <button type="button" class="btn btn-warning btn-xs" @click="editFile(leaf)">
+                    <i class="glyphicon glyphicon-edit"></i>
+                  </button>
+                  <button type="button" class="btn btn-danger btn-xs" @click="deleteFile(leaf)">
+                    <i class="glyphicon glyphicon-remove"></i>
+                  </button>                  
+                </div>
+                <div class="leaf-input input-group input-group-sm" v-if="leaf.name==show">
+                  <span class="input-group-addon" id="sizing-addon3">输入:</span>
+                  <input type="text" 
+                    v-model="text" 
+                    class="form-control" 
+                    aria-describedby="sizing-addon3"
+                    @keyup.enter="edi:tFileConfirm(leaf)"
+                    @keyup.esc="show=null">
+                  <span class="input-group-addon" id="sizing-addon3">回车确认</span>
+                </div>
+              </div>
+              <div v-if="leaf.children" v-for="(sitem, i) in leaf.children" class="ctrl">
+                <div class="leaf-h" v-if="!sitem.isleaf">
+                  <span class="glyphicon glyphicon-folder-open"></span>
+                  <span class="leaf-name">{{sitem.name}}</span>
+                  <div class="ctrl">
+                    <button type="button" class="btn btn-primary btn-xs" @click="addFile(leaf)">
+                      <i class="glyphicon glyphicon-plus"></i>
+                    </button>
+                    <button type="button" class="btn btn-warning btn-xs" @click="addCatalogue(leaf)">
+                      <i class="glyphicon glyphicon-duplicate"></i>
+                    </button>
+                  </div>
+                  <div class="leaf-input input-group input-group-sm" v-if="sitem.name==show">
+                    <span class="input-group-addon" id="sizing-addon3">输入:</span>
+                    <input type="text" 
+                      v-model="text" 
+                      class="form-control" 
+                      aria-describedby="sizing-addon3"
+                      @keyup.enter="addConfirm(sitem)"
+                      @keyup.esc="show=null">
+                    <span class="input-group-addon" id="sizing-addon3">回车确认</span>
+                  </div>
+                </div>
+                <div class="leaf-h" :class="{'current': current==sitem.name}" v-if="sitem.isleaf">
+                  <span class="glyphicon glyphicon-file"></span>
+                  <span class="leaf-name" @click="updateEdit(sitem)">{{sitem.name}}</span>
+                  <div class="ctrl">
+                    <button type="button" class="btn btn-warning btn-xs" @click="editFile(sitem)">
+                      <i class="glyphicon glyphicon-edit"></i>
+                    </button>
+                    <button type="button" class="btn btn-danger btn-xs" @click="deleteFile(sitem)">
+                      <i class="glyphicon glyphicon-remove"></i>
+                    </button>
+                  </div>
+                  <div class="leaf-input input-group input-group-sm" v-if="sitem.name==show">
+                    <span class="input-group-addon" id="sizing-addon3">输入:</span>
+                    <input type="text" 
+                      v-model="text" 
+                      class="form-control" 
+                      aria-describedby="sizing-addon3"
+                      @keyup.enter="editFileConfirm(sitem)"
+                      @keyup.esc="show=null">
+                    <span class="input-group-addon" id="sizing-addon3">回车确认</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <script src="./js/jquery@1.12.4-min.js"></script>
+  <script src="./bootstrap/js/bootstrap.min.js"></script>
+  <script src="./js/qwebchannel.js"></script>
+  <script src="./js/vue@2.6.2-min.js"></script>
+  <script src="./js/bundle.js"></script>
+  </body>
+</html>

@@ -1,15 +1,18 @@
-QWidget#editor {
-  background-color: #f6f1f0;
-}
 QTextEdit {
   border: none;
-  padding: 32px;
 }
-QTextEdit#editor_left {
-  background-color: #f6f1f0;
+QWidget {
+  border: none;
 }
-QTextEdit#editor_right {
-  background-color: #FFFFFF;
+QTextEdit#wb_left {
+  background-color: #e9e9e9;
+}
+QTextEdit {
+background-color: #f7f7f7;
+padding: 28px 32px;
+}
+LTextEdit#ltext_edit {
+  background-color: red;
 }
 QPushButton {
   margin-right: 8px;
@@ -44,7 +47,7 @@ QPushButton#btn_setting:hover,
 QPushButton#btn_setting:pressed {
   border-image: url(./resource/images/icon/setting-hover.gif)
 }
-QPushButton#btn_video 
+QPushButton#btn_video {
 border-image: url(./resource/images/icon/video.gif);
 }
 QPushButton#btn_video:hover,
@@ -65,4 +68,6 @@ QPushButton#btn_help:hover,
 QPushButton#btn_help:pressed {
   border-image: url(./resource/images/icon/help-hover.gif)
 }
-
+QLCDNumber#wb_timer {
+border: 1px solid #cdcdcd;
+}

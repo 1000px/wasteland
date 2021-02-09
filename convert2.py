@@ -208,7 +208,6 @@ class LConverter():
             for item in self.soup.body.children:
                 # 1 如果当前标签为ul或ol：
                 if item.name in ['ol', 'ul']:
-                    print(11, str(item))
                 # 2 判断当前tag_of_list为None，则设置tag_of_list为当前标签，并将标签内li插入
                     if self.tag_of_list is None or self.tag_of_list.name != item.name:
                         self.tag_of_list = Taggor(item.name)
@@ -239,7 +238,6 @@ class LConverter():
 
                         self.tag_of_list.add_item(p_str)
                         p_str = self.tag_of_list.get_tag()
-                        print(10, p_str)
                     elif not p_str.startswith('<p'):
                         p_str = '<p style="height:20px;line-height:20px;margin:0px;">' + p_str + '</p>'
                     
@@ -256,7 +254,6 @@ class LConverter():
                     p_str = '<p style="height:20px;line-height:20px;margin:0px;">' + p_str + '</p>'
  
                 html_str += p_str
-        #print(html_str)
         return html_str
 
     #def _get_tag_text(self):

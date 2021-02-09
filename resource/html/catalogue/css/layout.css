@@ -1,0 +1,46 @@
+.layout {
+  margin: 18px;
+}
+.sub-leaf {
+  padding-left: 18px;
+}
+.leaf-h {
+  height: 40px;
+  line-height: 40px;
+  border-bottom: 1px dashed #aaaaaa;
+  cursor: pointer;
+  position: relative;
+}
+.leaf-input {
+  width: 100%;
+  margin: 8px 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.catalogue {
+  padding-left: 18px;
+  padding-top: 12px;
+  font-size: 18px;
+}
+.catalogue.root {
+  padding-left: 0;
+}
+span.glyphicon {
+  color: #dbebfa;
+  margin-right: 6px;
+}
+div.leaf-h:hover span,
+div.leaf-h.current span {
+  color: #007fdb;
+}
+div button {
+  margin-left: 12px;
+}
+.catalogue .ctrl {
+  float: right;
+  display: none;
+}
+.catalogue .leaf-h:hover .ctrl {
+  display: block;
+}
